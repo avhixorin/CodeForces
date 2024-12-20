@@ -15,45 +15,23 @@
 #define nope cout << "NO\n";
 using namespace std;
 
-void avhixorin()
-{
+void avhixorin() {
     int n, k;
     cin >> n >> k;
-    if (k == 1)
-    {
-        for (int i = 1; i <= n; i++)
-        {
-            cout << i << " ";
+    vector<int> sperm(n, 0);
+    int cunt = 1;
+    for (int i = k - 1; i < n; i += k) {
+        sperm[i] = cunt;
+        cunt++;
+    }
+    for (int i = 0; i < n; i++) {
+        if(sperm[i]){
+            cout << sperm[i] << " ";
+        }else{
+            cout << cunt << " ";
+            cunt++;
         }
-        cout << endl;
-        return;
-    }
-
-    vector<int> sperm(n);
-    int tr = 0;
-    for (int i = 1; i <= n / k; i++)
-    {
-        sperm[tr] = i;
-        tr += k;
-    }
-    int abhi = (n / k) + 1;
-    for (int i = 0; i < n; i++)
-    {
-        if (sperm[i] == 0)
-        {
-            sperm[i] = abhi;
-            abhi++;
-        }
-    }
-    int j = 0;
-    for (int i = k; i <= n; i += k)
-    {
-        swap(sperm[i - 1], sperm[j * k]);
-        j++;
-    }
-    for (int i = 0; i < n; i++)
-    {
-        cout << sperm[i] << " ";
+        
     }
     cout << endl;
 }

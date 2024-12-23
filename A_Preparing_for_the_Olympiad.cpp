@@ -29,16 +29,17 @@ void avhixorin() {
     for (auto &it : m) cin >> it;
     vi s(n);
     for (auto &it : s) cin >> it;
-    int md = 0;
-    for (int i = 0; i < n; ++i) {
-        int d = m[i];
-        if (i + 1 < n) {
-            d -= s[i + 1];
+    int ans = 0;
+    int d = 0;
+    ans+= m[n - 1];
+    for (int i = 0; i < n - 1; ++i) {
+        d = m[i] - s[i+1];
+        if (d > 0) {
+            ans+=d;
         }
-        md += max(0LL, d);
     }
 
-    cout << md << '\n';
+    cout << ans << endl;
 }
 
 signed main() {

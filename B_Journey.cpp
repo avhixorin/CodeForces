@@ -1,47 +1,58 @@
 #include <bits/stdc++.h>
 #define int long long
+#define pi pair<long, long>
+#define vipi vector<pair<long, long>>
+#define vi vector<long long>
+#define pub push_back
+#define pob pop_back
+#define mp make_pair
+#define ff first
+#define ss second
+#define lb lower_bound
+#define ub upper_bound
+#define umap unordered_map
+#define uset unordered_set
+#define pq priority_queue
+#define haa cout << "YES\n";
+#define nahi cout << "NO\n";
+#define cut cout << endl;
 using namespace std;
 
-bool abhi(int days, int a, int b, int c, int t) {
-    int cs = days / 3;
-    int d = cs * (a + b + c);
-    int rem_days = days % 3;
-    if (rem_days >= 1) d += a;
-    if (rem_days >= 2) d += b;
-    
-    return d >= t;
+int gcd(int a, int b) {
+    return __gcd(a, b);
 }
 
-void solve() {
+void avhixorin() {
     int n, a, b, c;
     cin >> n >> a >> b >> c;
-    int l = 1;
-    int r = 3e9;
-    int ans = r;
-    
-    while (l <= r) {
-        int mid = l + (r - l) / 2;
-        
-        if (abhi(mid, a, b, c, n)) {
-            ans = mid;
-            r = mid - 1;
-        } else {
-            l = mid + 1;
-        }
+    int ans = 3 *(n / (a + b + c));
+    n%=(a + b + c);
+    if(n > 0){
+        n-=a;
+        ans++;
+    } 
+    if(n > 0){
+        n-=b;
+        ans++;
     }
-    int cs = ans / 3;
-    int remD = ans % 3;
-    cout << (cs * 3 + remD) << endl;
+    if(n > 0){
+        n-=c;
+        ans++;
+    }
+    cout << ans << endl;
+   
 }
 
 signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
-    
+
     int t;
     cin >> t;
+
     while (t--) {
-        solve();
+        avhixorin();
     }
+
     return 0;
 }

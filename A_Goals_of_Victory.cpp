@@ -27,20 +27,10 @@ int gcd(int a, int b) {
 
 
 void avhixorin() {
-   int n, m;
-    cin >> n >> m;
-    string x, s;
-    cin >> x >> s;
-    string temp = x;
-    int max = 6;
-    for (int i = 0; i <= 5; i++) {
-        if (temp.find(s) != string::npos) {
-            cout << i << endl;
-            return;
-        }
-        temp.append(temp);
-    }
-    cout << -1 << endl;
+   int n; cin >> n;
+   vi vec(n-1); lele(vec);
+   int sum = accumulate(vec.begin(), vec.end(), 0LL);
+   cout << -sum << endl;
 }
 
 signed main() {

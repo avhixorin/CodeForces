@@ -25,7 +25,13 @@
     for (auto i : vec) \
         cout << i << " ";
 
+bool isEven(int n)
+{
+    return ((n & 1) == 0);
+}
+
 using namespace std;
+
 int gcd(int a, int b)
 {
     return __gcd(a, b);
@@ -33,21 +39,39 @@ int gcd(int a, int b)
 
 void avhixorin()
 {
-    int n;
-    cin >> n;
-    int ans = 0;
-    for (int i = 1; i <= n; i *= 10) {
-        for (int x = 1; x <= 9; x++) {
-            if (x * i <= n) {
-                ans++;
-            } else {
-                break;
-            }
+    int n, k;
+    cin >> n >> k;
+    vi vec(n);
+    lele(vec);
+
+    int ans = k-1;
+    int e = 0;
+    for (auto it : vec)
+    {   
+        if(isEven(it)) e++;
+        if (it % k == 0)
+        {
+            cout << 0 << endl;
+            return;
+        }else
+        {
+            int nxt = k - (it % k);
+            ans = min(ans, nxt);
         }
     }
-
-    cout << ans << endl;
+    if(k != 4){
+        cout << ans << endl;
+    }else{
+        if(e >= 2){
+            cout << 0 << endl;
+        }else if(e == 1){
+            cout << min(ans,1LL) << endl;
+        }else{
+            cout << min(ans,2LL) << endl;
+        }
+    }
 }
+
 signed main()
 {
     ios_base::sync_with_stdio(false);
